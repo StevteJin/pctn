@@ -1,0 +1,32 @@
+<div class="bg">
+  <div class="login-div">
+    <div class="login-left-div">
+      <p class="title">登录</p>
+
+      <div class="login-input">
+        <nz-input-group [nzSuffix]="suffixTemplate" nzPrefixIcon="anticon anticon-user">
+          <input type="text" (keyup.enter)='login()' nz-input placeholder="请输入用户名" [(ngModel)]="username">
+        </nz-input-group>
+        <ng-template #suffixTemplate><i class="anticon anticon-close-circle" (click)="username=null" *ngIf="username"></i></ng-template>
+      </div>
+
+      <div class="login-input">
+        <nz-input-group [nzSuffix]="suffixTemplate2" nzPrefixIcon="anticon anticon-lock">
+          <input type="password" (keyup.enter)='login()' nz-input placeholder="请输入密码" [(ngModel)]="password">
+        </nz-input-group>
+        <ng-template #suffixTemplate2><i class="anticon anticon-close-circle" (click)="password=null" *ngIf="password"></i></ng-template>
+      </div>
+
+
+      <div class="login-btn">
+        <button nz-button nzType="primary" (click)='login()'>登录</button>
+        <!-- <p>
+        修改密码
+      </p> -->
+      </div>
+    </div>
+    <div class="login-right-div">
+      <img src="./assets/image/AI.png" alt="">
+    </div>
+  </div>
+</div>

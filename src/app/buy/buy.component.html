@@ -1,0 +1,208 @@
+<div class="hangqing">
+  <div class="adjust {{classType}}">
+    <p class="buy-title">{{text}}建议</p>
+    <p class="input-p">
+      <span>
+        股票代码
+      </span>
+      <input placeholder="请输入股票代码" maxlength="8" nz-input [(ngModel)]="code" (keyup.enter)='keyup(code)' (input)="onInput()"
+        [nzAutocomplete]="auto">
+      <nz-autocomplete [nzWidth]='300' [nzBackfill]='false' #auto>
+        <nz-auto-option *ngFor="let option of list" (click)='selectOption(option.stockName)' [nzValue]="option.stockCode">
+          <span class="search-span">{{option.stockName}}</span>
+          <span class="search-span">{{option.stockCode}}</span>
+          <span class="search-span">{{option.pinYin}}</span>
+        </nz-auto-option>
+      </nz-autocomplete>
+    </p>
+    <p class="input-p">
+      <span>
+        股票名称
+      </span>
+      <span style="width: 180px;">{{stockInfo.stockName}}</span>
+    </p>
+    <p class="input-p" style="user-select:none;">
+      <span>
+        委托价格
+      </span>
+      <a class="add-icon {{classType}}" (click)='count(-1)'>
+        <i class="anticon anticon-minus-circle-o"></i>
+      </a>
+      <input appNumberInput type="text" class="ng-pristine ng-invalid ant-input ng-touched price-input" [(ngModel)]="stockInfo.appointPrice">
+      <a class="add-icon {{classType}}" (click)='count(1)' style="margin-left:10px;">
+        <i class="anticon anticon-plus-circle-o"></i>
+      </a>
+
+    </p>
+    <p style='font-size: 12px;margin-bottom: 5px;'>
+      <span  style='margin-right: 60px;' class='green' (click)='selectPrice(stockHQ.priceDownlimit)'>跌停：{{stockHQ.priceDownlimit}}</span>
+      <span class='red' (click)='selectPrice(stockHQ.priceUplimit)'> 涨停：{{stockHQ.priceUplimit}}</span>
+    </p>
+    <p class="input-p">
+      <span>
+        可{{text2}}数量
+      </span>
+      <span>{{fullcount}}</span>
+    </p>
+    <p class="input-p">
+      <span>
+        委托数量
+      </span>
+      <a class="add-icon {{classType}}" (click)='count2(-1)'>
+        <i class="anticon anticon-minus-circle-o"></i>
+      </a>
+      <input appNumberInput type="text" class="ng-pristine ng-invalid ant-input ng-touched price-input" [(ngModel)]="stockInfo.appointCnt">
+      <a class="add-icon {{classType}}" (click)='count2(1)' style="margin-left:10px;">
+        <i class="anticon anticon-plus-circle-o"></i>
+      </a>
+    </p>
+    <p class="input-p">
+      <nz-radio-group [(ngModel)]="radioValue">
+        <label nz-radio nzValue="A" (click)='radio(1)'>全仓</label>
+        <label nz-radio nzValue="B" (click)='radio(2)'>半仓</label>
+        <label nz-radio nzValue="C" (click)='radio(3)'>1/3仓</label>
+        <label nz-radio nzValue="D" (click)='radio(4)'>1/4仓</label>
+      </nz-radio-group>
+    </p>
+    <p>
+    </p>
+    <p class="btn-p">
+      <button (click)='buy()'>{{text}}</button>
+    </p>
+  </div>
+  <div class="zhangfu">
+    <div (click)='selectPrice(stockHQ.sellLevel.sellPrice05)'>
+      <span>卖五</span>
+      <span class="{{HQColor(stockHQ.sellLevel.sellPrice05)}}">{{stockHQ.sellLevel.sellPrice05 | round4}}</span>
+      <span>{{stockHQ.sellLevel.sellVolume05 | numInt}}</span>
+    </div>
+    <div (click)='selectPrice(stockHQ.sellLevel.sellPrice04)'>
+      <span>卖四</span>
+      <span class="{{HQColor(stockHQ.sellLevel.sellPrice04)}}">{{stockHQ.sellLevel.sellPrice04 | round4}}</span>
+      <span>{{stockHQ.sellLevel.sellVolume04 | numInt}}</span>
+    </div>
+    <div (click)='selectPrice(stockHQ.sellLevel.sellPrice03)'>
+      <span>卖三</span>
+      <span class="{{HQColor(stockHQ.sellLevel.sellPrice03)}}">{{stockHQ.sellLevel.sellPrice03 | round4}}</span>
+      <span>{{stockHQ.sellLevel.sellVolume03 | numInt}}</span>
+    </div>
+    <div (click)='selectPrice(stockHQ.sellLevel.sellPrice02)'>
+      <span>卖二</span>
+      <span class="{{HQColor(stockHQ.sellLevel.sellPrice02)}}">{{stockHQ.sellLevel.sellPrice02 | round4}}</span>
+      <span>{{stockHQ.sellLevel.sellVolume02 | numInt}}</span>
+    </div>
+    <div (click)='selectPrice(stockHQ.sellLevel.sellPrice01)'>
+      <span>卖一</span>
+      <span class="{{HQColor(stockHQ.sellLevel.sellPrice01)}}">{{stockHQ.sellLevel.sellPrice01 | round4}}</span>
+      <span>{{stockHQ.sellLevel.sellVolume01 | numInt}}</span>
+    </div>
+    <div class="border-div">
+      <span>
+        最新
+      </span>
+      <span (click)='selectPrice(stockHQ.lastPrice)'>
+        {{stockHQ.lastPrice | round4}}
+      </span>
+      <span>
+        涨幅
+      </span>
+      <span>
+        {{stockHQ.upRatio}}
+      </span>
+    </div>
+    <div (click)='selectPrice(stockHQ.buyLevel.buyPrice01)'>
+      <span>买一</span>
+      <span class="{{HQColor(stockHQ.buyLevel.buyPrice01)}}">{{stockHQ.buyLevel.buyPrice01 | round4}}</span>
+      <span>{{stockHQ.buyLevel.buyVolume01 | numInt}}</span>
+    </div>
+    <div (click)='selectPrice(stockHQ.buyLevel.buyPrice02)'>
+      <span>买二</span>
+      <span class="{{HQColor(stockHQ.buyLevel.buyPrice02)}}">{{stockHQ.buyLevel.buyPrice02 | round4}}</span>
+      <span>{{stockHQ.buyLevel.buyVolume02 | numInt}}</span>
+    </div>
+    <div (click)='selectPrice(stockHQ.buyLevel.buyPrice03)'>
+      <span>买三</span>
+      <span class="{{HQColor(stockHQ.buyLevel.buyPrice03)}}">{{stockHQ.buyLevel.buyPrice03 | round4}}</span>
+      <span>{{stockHQ.buyLevel.buyVolume03 | numInt}}</span>
+    </div>
+    <div (click)='selectPrice(stockHQ.buyLevel.buyPrice04)'>
+      <span>买四</span>
+      <span class="{{HQColor(stockHQ.buyLevel.buyPrice04)}}">{{stockHQ.buyLevel.buyPrice04 | round4}}</span>
+      <span>{{stockHQ.buyLevel.buyVolume04 | numInt}}</span>
+    </div>
+    <div (click)='selectPrice(stockHQ.buyLevel.buyPrice05)'>
+      <span>买五</span>
+      <span class="{{HQColor(stockHQ.buyLevel.buyPrice05)}}">{{stockHQ.buyLevel.buyPrice05 | round4}}</span>
+      <span>{{stockHQ.buyLevel.buyVolume05 | numInt}}</span>
+    </div>
+  </div>
+  <div id="chart"></div>
+</div>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="确认{{text}}" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <p class="alert-p">
+    <span>
+      账户：
+    </span>
+    <span>
+      {{userCode}}
+    </span>
+  </p>
+  <p class="alert-p">
+    <span>
+      股票名称：
+    </span>
+    <span>
+      {{stockInfo.stockName}}
+    </span>
+  </p>
+  <p class="alert-p">
+    <span>
+      股票代码：
+    </span>
+    <span>
+      {{stockInfo.stockCode}}
+    </span>
+  </p>
+  <p class="alert-p">
+    <span>
+      数量：
+    </span>
+    <span>
+      {{stockInfo.appointCnt}}
+    </span>
+  </p>
+  <p class="alert-p">
+    <span>
+      委托价：
+    </span>
+    <span>
+      {{stockInfo.appointPrice}}
+    </span>
+  </p>
+  <p class="alert-p">
+    <span>
+      订单金额：
+    </span>
+    <span>
+      {{Multiply(stockInfo.appointPrice ,stockInfo.appointCnt) | toFix}}
+    </span>
+  </p>
+  <p class="alert-p">
+    <span>
+      预估手续费：
+    </span>
+    <span>
+      {{handle()}}
+    </span>
+  </p>
+</nz-modal>
+<div>
+  <div class="tabs {{isFullScreen?'isFullScreen-tabs':''}}">
+    <button class="{{tabUrl == 'hold'?'tabs-btn-active':''}}" (click)='goto("hold")'>持仓</button>
+    <button class="{{tabUrl == 'success'?'tabs-btn-active':''}}" (click)='goto("success")'>成交</button>
+    <button class="{{tabUrl == 'appoint'?'tabs-btn-active':''}}" (click)='goto("appoint")'>委托</button>
+  </div>
+  <div class="tabs-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

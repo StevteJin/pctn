@@ -1,0 +1,35 @@
+<div class="action-div">
+  <button nz-button nzType="default" (click)='exportTable()'>导出列表</button>
+</div>
+<div class="table my-scroll">
+  <nz-table #filterTable [nzData]="displayData" id="exportableTable" [nzNoResult]='noDataText' [nzShowPagination]='false'>
+    <thead (nzSortChange)="sort($event)" nzSingleSort>
+      <tr>
+        <th nzShowSort nzSortKey="stockCode">股票代码</th>
+        <th nzShowSort nzSortKey="stockName">股票名称</th>
+        <th nzShowSort nzSortKey="stockCnt">实际数量</th>
+        <th nzShowSort nzSortKey="stockCode">冻结数量</th>
+        <th nzShowSort nzSortKey="costPrice">参考成本</th>
+        <th nzShowSort nzSortKey="lastPrice">市价</th>
+        <th nzShowSort nzSortKey="profitRatio">涨幅</th>
+        <th nzShowSort nzSortKey="marketValue">持仓权益</th>
+        <th nzShowSort nzSortKey="profit">参考盈亏</th>
+        <th nzShowSort nzSortKey="upRatio">盈亏比例(%)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of list" (click)='select(data)'>
+        <td>{{data.stockCode}}</td>
+        <td>{{data.stockName}}</td>
+        <td>{{data.stockCnt}}</td>
+        <td>{{data.frozenCnt}}</td>
+        <td>{{data.costPrice}}</td>
+        <td>{{data.lastPrice}}</td>
+        <td>{{data.upRatio}}</td>
+        <td>{{data.marketValue}}</td>
+        <td>{{data.profit}}</td>
+        <td>{{data.profitRatio}}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

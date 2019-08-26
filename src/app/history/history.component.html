@@ -1,0 +1,115 @@
+<div>
+  <span class="margin-right-30">
+    类型
+  </span>
+  <nz-select class="margin-right-30" style="width: 150px;" [(ngModel)]="selectedValue" (ngModelChange)="provinceChange()">
+    <nz-option nzValue="1" nzLabel="历史委托"></nz-option>
+    <nz-option nzValue="2" nzLabel="历史成交"></nz-option>
+    <!-- <nz-option nzValue="3" nzLabel="对账单"></nz-option> -->
+  </nz-select>
+  <nz-date-picker class="margin-right-30" [(ngModel)]="dateRange" (ngModelChange)='search()'></nz-date-picker>
+  <button nz-button nzType="default" (click)='exportTable()'>导出列表</button>
+  <!-- <button nz-button nzType="primary" (click)='search()'><i class="anticon anticon-search"></i>查询</button> -->
+</div>
+<div class="my-scroll" style="margin-top: 30px;height: 600px;overflow-y: auto;">
+  <nz-table #basicTable [nzData]="dataSet" *ngIf='selectedValue==="1"' [nzNoResult]='noDataText'>
+    <thead>
+      <tr>
+        <th>委托日期</th>
+        <th>委托时间</th>
+        <th>股票代码</th>
+        <th>股票名称</th>
+        <th>操作</th>
+        <th>委托价格</th>
+        <th>委托数量</th>
+        <th>成交数量</th>
+        <th>成交均价</th>
+        <th>成交金额</th>
+        <th>手续费</th>
+        <th>发生金额</th>
+        <th>状态</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of list">
+        <td>{{data.orderDate}}</td>
+        <td>{{data.appointTime}}</td>
+        <td>{{data.stockCode}}</td>
+        <td>{{data.stockName}}</td>
+        <td [class]="color(data.appointTypeDesc)">{{data.appointTypeDesc}}</td>
+        <td>{{data.appointPrice}}</td>
+        <td>{{data.appointCnt}}</td>
+        <td>{{data.dealCnt}}</td>
+        <td>{{data.dealAvrPrice}}</td>
+        <td>{{data.dealAmount}}</td>
+        <td>{{data.commission}}</td>
+        <td>{{data.happenAmount}}</td>
+        <td>{{data.appointStatusDesc}}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+  <nz-table #basicTable [nzData]="dataSet" *ngIf='selectedValue==="2"'  [nzNoResult]='noDataText'>
+    <thead>
+      <tr>
+        <th>成交日期</th>
+        <th>成交时间</th>
+        <th>股票代码</th>
+        <th>股票名称</th>
+        <th>操作</th>
+        <th>成交数量</th>
+        <th>成交均价</th>
+        <!-- <th>成交金额</th>
+        <th>发生金额</th>
+        <th>佣金费</th>
+        <th>印花税</th>
+        <th>过户费</th> -->
+        <th>成交编号</th>
+        <th>委托编号</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of list">
+        <td>{{data.dealDate}}</td>
+        <td>{{data.dealTime}}</td>
+        <td>{{data.stockCode}}</td>
+        <td>{{data.stockName}}</td>
+        <td [class]="color(data.appointTypeDesc)">{{data.appointTypeDesc}}</td>
+        <td>{{data.dealCnt}}</td>
+        <td>{{data.dealAvrPrice}}</td>
+        <!-- <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td> -->
+        <td>{{data.tradeId}}</td>
+        <td>{{data.appointOrderCode}}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+  <nz-table #basicTable [nzData]="dataSet" *ngIf='selectedValue==="3"'  [nzNoResult]='noDataText'>
+    <thead>
+      <tr>
+        <th>日期</th>
+        <th>时间</th>
+        <th>股票代码</th>
+        <th>股票名称</th>
+        <th>操作</th>
+        <th>成交数量</th>
+        <th>成交均价</th>
+        <th>发生金额</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of list">
+        <td>{{data.orderDate}}</td>
+        <td>{{data.appointTime}}</td>
+        <td>{{data.stockCode}}</td>
+        <td>{{data.stockName}}</td>
+        <td [class]="color(data.operateDesc)">{{data.operateDesc}}</td>
+        <td>{{data.dealCnt}}</td>
+        <td>{{data.dealAvrPrice}}</td>
+        <td>{{data.dealAmount}}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

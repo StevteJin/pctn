@@ -1,0 +1,61 @@
+<nz-layout style="height: 100vh;">
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="triggerTemplate">
+    <ul nz-menu [nzTheme]="'dark'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
+      <li (click)='goto("buy")' nz-menu-item class="ant-menu-item {{url =='buy'?' ant-menu-item-selected':''}}"><span><i
+            class="anticon anticon-login"></i><span class="nav-text">买入建议</span></span></li>
+      <li (click)='goto("sell")' nz-menu-item class="ant-menu-item {{url =='sell'?' ant-menu-item-selected':''}}"><span><i
+            class="anticon anticon-logout"></i><span class="nav-text">卖出建议</span></span></li>
+      <li (click)='goto("history")' nz-menu-item class=" ant-menu-item {{ url =='history'?' ant-menu-item-selected':''}}"><span><i
+            class="anticon anticon-clock-circle-o"></i><span class="nav-text">历史查询</span></span></li>
+    </ul>
+  </nz-sider>
+  <nz-modal [(nzVisible)]="isVisible" nzTitle="修改密码" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <div class="alert-input">
+      <p class="input-p">
+        <span>
+          旧密码
+        </span>
+        <input type="password" placeholder="请输入旧密码" [(ngModel)]="oldPass" nz-input>
+      </p>
+      <p class="input-p">
+        <span>
+          新密码
+        </span>
+        <input type="password" placeholder="请输入新密码" [(ngModel)]="newPass" nz-input maxlength="10">
+      </p>
+      <p class="input-p">
+        <span>
+          确认密码
+        </span>
+        <input type="password" placeholder="请输入新密码" [(ngModel)]="newPass2" nz-input maxlength="10">
+      </p>
+    </div>
+  </nz-modal>
+  <nz-layout style="overflow-y: hidden">
+    <nz-header style="background: #fff; padding:0;">
+      <i class="anticon trigger" [class.anticon-menu-fold]="!isCollapsed" [class.anticon-menu-unfold]="isCollapsed"
+        (click)="isCollapsed=!isCollapsed"></i>
+      <span>账号：</span>
+      <span class="margin-right-30">{{userName}}</span>
+      <span>可用资金：</span>
+      <span class="margin-right-30">{{userInfo.ableScale}}</span>
+      <span>总资产：</span>
+      <span class="margin-right-30">{{userInfo.totalScale}}</span>
+      <span>持仓权益：</span>
+      <span class="margin-right-30">{{userInfo.stockScale}}</span>
+      <span>冻结资金：</span>
+      <span class="margin-right-30">{{freezaFee}}</span>
+      <span class="logout" (click)='logout()'>退出登录</span>
+      <span class="logout" (click)='reset()'>修改密码</span>
+
+    </nz-header>
+    <nz-content style="margin:24px 16px 0;overflow-y: auto">
+      <div style="padding:24px; background: #fff; min-height: 800px;">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>
+<ng-template #trigger>
+  <i class="anticon anticon-up"></i>
+</ng-template>

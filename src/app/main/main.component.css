@@ -1,0 +1,46 @@
+:host ::ng-deep .trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color .3s;
+}
+
+:host ::ng-deep .trigger:hover {
+  color: #1890ff;
+}
+
+:host ::ng-deep .logo {
+  height: 32px;
+  background: rgba(255, 255, 255, .2);
+  margin: 16px;
+}
+
+.logo p {
+  text-align: center;
+  color: #fff;
+  line-height: 32px; 
+}
+
+.alert-input{
+    
+}
+
+.input-p {
+  font-size: 14px;
+  width: 250px;
+  margin: auto;
+  margin-bottom: 15px;
+}
+
+.input-p span {
+  display: inline-block;
+  width: 60px;
+}
+
+.input-p input {
+  margin-left: 10px;
+  width: 157px;
+  height: 25px;
+  font-size: 12px;
+}

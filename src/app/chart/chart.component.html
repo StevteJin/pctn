@@ -1,0 +1,92 @@
+<div class="left-div">
+  <div class="optionTitle">
+    <button (click)='change(item)' [class]="item == date?'active':''" *ngFor="let item of dateList">
+      {{item}}
+    </button>
+  </div>
+  <div class="notempty cclb">
+    <div style="background: #efefef;    ">
+      <div class="table-flex" style="width: 980px;">
+        <div>
+          股票代码
+        </div>
+        <div class="flex-name">
+          名称
+        </div>
+        <div>
+          涨跌幅(%)
+        </div>
+        <div>
+          现价
+        </div>
+        <div>
+          行权价
+        </div>
+        <div>
+          现价
+        </div>
+        <div>
+          涨跌幅(%)
+        </div>
+        <div class="flex-name">
+          名称
+        </div>
+        <div>
+          股票代码
+        </div>
+      </div>
+    </div>
+    <div class="zixuan-list">
+      <div class="table-flex2" *ngFor='let a of quoteDetail'>
+        <!-- <div (click)='goto(a.stockCodeBuy)' class="two-lines">
+          <p>
+            {{a.stockCodeBuy}}
+          </p>
+          <p>
+            {{a.stockNameBuy}}
+          </p>
+        </div> -->
+        <div (click)='goto(a.stockCodeBuy)' [class]="color(a.upRatioBuy)">
+          {{a.stockCodeBuy}}
+        </div>
+        <div (click)='goto(a.stockCodeBuy)' [class]="color(a.upRatioBuy)" style="width:360px;">
+          {{a.stockNameBuy}}
+        </div>
+        <div (click)='goto(a.stockCodeBuy)' [class]="color(a.upRatioBuy)">
+          {{a.upRatioBuy}}
+        </div>
+        <div (click)='goto(a.stockCodeBuy)' [class]="color(a.upRatioBuy)">
+          {{a.lastPriceBuy | round4}}
+        </div>
+        <div>
+          {{a.exercisePrice | round4}}
+        </div>
+        <div (click)='goto(a.stockCodeSell)' [class]="color(a.upRatioSell)">
+          {{a.lastPriceSell | round4}}
+        </div>
+        <div (click)='goto(a.stockCodeSell)' [class]="color(a.upRatioSell)">
+          {{a.upRatioSell}}
+        </div>
+        <div (click)='goto(a.stockCodeSell)' [class]="color(a.upRatioSell)" style="width:360px;">
+          {{a.stockNameSell}}
+        </div>
+        <div (click)='goto(a.stockCodeSell)' [class]="color(a.upRatioSell)">
+          {{a.stockCodeSell}}
+        </div>
+        <!-- <div (click)='goto(a.stockCodeSell)' class="two-lines">
+          <p>
+            {{a.stockCodeSell}}
+          </p>
+          <p>
+            {{a.stockNameSell}}
+          </p>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+<div class="right-div" *ngIf="code != ''">
+  <div class="fenshi-div">
+    
+  </div>
+</div>

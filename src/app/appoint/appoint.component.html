@@ -1,0 +1,51 @@
+<div class="action-div">
+  <label class="margin-right-30" nz-checkbox [(ngModel)]="isIng" (nzCheckedChange)='checkIng()'>只显示可撤委托单</label>
+  <button class="margin-right-30" [disabled]='checkList.length == 0' nz-button nzType="primary" (click)='chedan()'>撤单</button>
+  <button class="margin-right-30" nz-button nzType="default" (click)='chedanAll()'>全撤</button>
+  <button nz-button nzType="default" (click)='exportTable()'>导出列表</button>
+</div>
+<div class="table my-scroll">
+  <nz-table #filterTable [nzData]="displayData" id="exportableTable" [nzNoResult]='noDataText' [nzShowPagination]='false'>
+    <thead (nzSortChange)="sort($event)" nzSingleSort>
+      <tr>
+        <th nzShowCheckbox [(nzChecked)]="allChecked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="checkAll($event)"></th>
+        <th nzShowSort nzSortKey="appointTime">委托时间</th>
+        <th nzShowSort nzSortKey="stockName">股票代码</th>
+        <th nzShowSort nzSortKey="stockName">股票名称</th>
+        <th nzShowSort nzSortKey="appointTypeDesc">操作</th>
+        <th nzShowSort nzSortKey="appointPrice">委托价格</th>
+        <th nzShowSort nzSortKey="appointCnt">委托数量</th>
+        <th nzShowSort nzSortKey="dealCnt">成交数量</th>
+        <th nzShowSort nzSortKey="dealAvrPrice">成交均价</th>
+        <th nzShowSort nzSortKey="pkOrder">委托编号</th>
+        <th nzShowSort nzSortKey="appointStatusDesc">状态</th>
+        <th nzShowSort nzSortKey="dealAmount">成交金额</th>
+        <th nzShowSort nzSortKey="commission">手续费</th>
+        <th nzShowSort nzSortKey="happenAmount">发生金额</th>
+        <th nzShowSort nzSortKey="memo">备注</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of list;let i = index;">
+        <td nzShowCheckbox [nzChecked]="isChecked(data.pkOrder)" [nzDisabled]="!data.ing || data.pkOrder == '' || data.pkOrder == null" (nzCheckedChange)="refreshStatus(data.pkOrder)"></td>
+        <td>{{data.appointTime}}</td>
+        <td>{{data.stockCode}}</td>
+        <td>{{data.stockName}}</td>
+        <td [class]="color(data.appointTypeDesc)">{{data.appointTypeDesc}}</td>
+        <td>{{data.appointPrice}}</td>
+        <td>{{data.appointCnt}}</td>
+        <td>{{data.dealCnt}}</td>
+        <td>{{data.dealAvrPrice}}</td>
+        <td>{{data.pkOrder}}</td>
+        <td>{{data.appointStatusDesc}}</td>
+        <td>{{data.dealAmount}}</td>
+        <td>{{data.commission}}</td>
+        <td>{{data.happenAmount}}</td>
+        <td>{{data.memo}}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="提示" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <p>是否确认撤单？</p>
+</nz-modal>

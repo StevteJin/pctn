@@ -1,0 +1,178 @@
+/* You can add global styles to this file, and also import other style files */
+
+body,
+html {
+  margin: 0;
+}
+
+.bg {
+  background: url(./assets/image/bg.jpg);
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.login-div {
+  text-align: center;
+  padding: 15px 30px;
+  width: 1200px;
+  height: 550px;
+  box-shadow: 0 0 5px 2px rgba(115, 115, 115, 0.23);
+  margin: auto;
+  margin-top: 10vh;
+  background: #fff;
+}
+
+.login-left-div {
+  width: 250px;
+  float: left;
+  margin-top: 75px;
+  margin-left: 50px;
+}
+
+.login-right-div img{
+  width: 440px;
+  height: 440px;
+  margin-top: 40px;
+  margin-left: 150px;
+}
+
+.login-div .title {
+  font-size: 24px;
+  text-align: left;
+  margin: 30px 0 50px 0;
+}
+
+.login-input {
+  margin-top: 20px;
+}
+
+.login-btn {
+  margin-top: 35px;
+}
+
+.login-btn button {
+  width: 100%;
+}
+
+.login-btn p {
+  float: right;
+  color: #40a9ff;
+  margin-top: 10px;
+}
+
+.hangqing {
+  height: 274px;
+  width: 1200px;
+  display: flex;
+}
+
+.margin-right-30 {
+  margin-right: 30px !important;
+}
+
+.search-span {
+  font-size: 12px;
+  margin-right: 10px;
+}
+
+.btn-p {
+  display: flex;
+  margin-left: -20px;
+}
+
+.btn-p button {
+  flex: 1;
+  margin: 0 20px;
+  border: none;
+  color: #fff;
+  background: #40a9ff;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btn-p button:active {
+  background: #246296;
+}
+
+.green {
+  color: green !important;
+}
+
+.red {
+  color: rgba(197, 8, 8, 0.918) !important;
+}
+
+.blue {
+  color: #40a9ff !important;
+}
+
+.tabs {
+  border-bottom: 1px solid #ebedf0;
+  margin: 10px 0;
+  height: 34px;
+}
+
+.tabs button {
+  border: none;
+  background: none;
+  width: 100px;
+  text-align: center;
+  height: 33px;
+  cursor: pointer;
+  outline: none;
+}
+
+.tabs button:active {
+  color: #246296;
+}
+
+.tabs-btn-active {
+  color: #40a9ff !important;
+  border-bottom: solid 1px #40a9ff !important;
+}
+
+.action-div {
+  margin: 10px 0;
+}
+
+.table {
+  height: 400px;
+  overflow-y: auto;
+}
+
+.table td,
+.table th {
+  padding: 8px !important;
+}
+
+.my-scroll::-webkit-scrollbar-thumb {
+  background: #c5c5c5;
+  border-radius: 4px;
+}
+
+.my-scroll::-webkit-scrollbar {
+  width: 4px;
+  height: 8px;
+}
+
+.my-scroll::-webkit-scrollbar-corner {
+  border-radius: 4px;
+}
+
+.my-scroll::-webkit-scrollbar-track-piece {
+  background: rgba(214, 214, 214, 0.36);
+  border-radius: 4px;
+}
+
+.logout {
+  float: right;
+  margin-right: 40px;
+  cursor: pointer;
+}
+
+.logout:hover {
+  color: #40a9ff;
+}

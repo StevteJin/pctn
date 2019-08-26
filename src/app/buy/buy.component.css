@@ -1,0 +1,94 @@
+.input-p {
+  font-size: 12px;
+  width: 290px;
+  margin-bottom: 5px;
+}
+
+.input-p span {
+  display: inline-block;
+  width: 60px;
+}
+
+.input-p input {
+  width: 190px;
+  height: 25px;
+  font-size: 12px;
+}
+
+.buy-title {
+  font-size: 16px;
+}
+
+.zhangfu {
+  width: 268px;
+  margin-left: 30px;
+  border: solid 1px rgba(0, 0, 0, 0.15);
+}
+
+.zhangfu div {
+  font-size: 12px;
+  display: flex;
+  margin: 4px 10px;
+  cursor: pointer;
+}
+
+.zhangfu div span {
+  flex: 1;
+  text-align: left;
+}
+
+.zhangfu div:hover {
+  color: #40a9ff;
+}
+
+.border-div {
+  padding: 1px 0;
+  border: solid 1px rgba(0, 0, 0, 0.15);
+  border-left: none;
+  border-right: none;
+}
+
+.BUY {
+  color: rgba(197, 8, 8, 0.918) !important;
+}
+
+.isFullScreen-hq {
+  width: 580px;
+  float: left;
+  margin-top: 50px;
+}
+
+.isFullScreen-tabs {
+  float: left;
+  width: calc(100% - 600px);
+}
+
+.SELL {
+  color: #40a9ff !important;
+}
+
+.price-input {
+  width: 96px !important;
+  text-align: center;
+}
+
+.add-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.add-icon i {
+  font-size: 17px;
+  line-height: 23px;
+}
+
+.alert-p {
+  width: 300px;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.priceType label {
+  font-size: 12px;
+}

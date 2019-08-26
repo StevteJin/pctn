@@ -1,0 +1,171 @@
+.cclb {
+  background: #fff;
+  overflow-x: hidden;
+  width: 1000px;
+}
+
+.cclb table {
+  width: 100%;
+  text-align: center;
+  font-size: .9rem;
+}
+
+.cclb table tr {
+  height: 36px;
+  border-bottom: solid 1px #ccc;
+}
+
+.cclb table tr:first-child {
+  background: #e3e6e6;
+}
+
+.cclb table tr td p {
+  margin: 5px;
+}
+
+.delete-btn {
+  margin-left: 30px;
+  margin-top: 10px;
+}
+
+.table-flex {
+  height: 40px;
+  line-height: 40px;
+  background: #efefef;
+  text-align: center;
+  border-bottom: solid 1px #e4e4e4;
+  display: flex;
+}
+
+.table-flex div {
+  width: 70px;
+  font-size: 12px;
+}
+
+.table-flex2 {
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: .9rem;
+  width: 100%;
+  border-bottom: solid 1px #f5f5f5;
+  display: flex;
+  cursor: pointer;
+}
+
+.table-flex2 div {
+  width: 70px;
+}
+
+.table-flex2 div:nth-child(5) {
+  background: rgba(106, 193, 255, 0.4);
+}
+
+.flex-name {
+  font-size: 12px;
+  width: 360px !important;
+}
+
+.edit {
+  float: left;
+  margin-left: 20px;
+  font-size: .9rem;
+  position: relative;
+  z-index: 10;
+}
+
+.show-delete {
+  animation: show 1000ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes show {
+  from {
+    margin-left: 0px;
+  }
+
+  to {
+    margin-left: 60px;
+  }
+}
+
+.zixuan-list {
+  height: 642px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+.optionTitle {
+  height: 40px;
+  line-height: 40px;
+  display: flex;
+  border-bottom: solid 1px #eae9e9;
+  margin-bottom: 20px;
+}
+
+.optionTitle span {
+  flex: 1;
+  text-align: center;
+  font-size: 17px;
+}
+
+.optionTitle button {
+  border: none;
+  flex: 1;
+  background: none;
+  outline: none;
+}
+
+.active {
+  border-bottom: solid 2px #b00e23 !important;
+}
+
+.left-div {
+  width: 500px;
+  float: left;
+}
+
+.two-lines {
+  width: 100px !important;
+}
+
+.two-lines p:nth-child(1) {
+  height: 0px;
+  margin-top: -5px;
+}
+
+.two-lines p:nth-child(2) {
+  font-size: 11px;
+}
+
+.zhangfu {
+  width: 268px;
+  margin-left: 30px;
+}
+
+.zhangfu div {
+  font-size: 12px;
+  display: flex;
+  margin: 4px 10px;
+  cursor: pointer;
+}
+
+.zhangfu div span {
+  flex: 1;
+  text-align: left;
+}
+
+.zhangfu div:hover {
+  color: #40a9ff;
+}
+
+.right-div {
+  float: left;
+  margin-top: 3px;
+  margin-left: 50px;
+}
+
+.right-content p {
+  text-align: right;
+}

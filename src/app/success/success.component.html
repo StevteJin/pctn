@@ -1,0 +1,32 @@
+<div class="action-div">
+  <button nz-button nzType="default" (click)='exportTable()'>导出列表</button>
+</div>
+<div class="table my-scroll">
+<nz-table #filterTable [nzData]="displayData" id="exportableTable" [nzNoResult]='noDataText' [nzShowPagination]='false'>
+  <thead (nzSortChange)="sort($event)" nzSingleSort>
+    <tr>
+      <th nzShowSort nzSortKey="dealTime">成交时间</th>
+      <th nzShowSort nzSortKey="stockCode">股票代码</th>
+      <th nzShowSort nzSortKey="stockName">股票名称</th>
+      <th nzShowSort nzSortKey="appointTypeDesc">操作</th>
+      <th nzShowSort nzSortKey="dealCnt">成交数量</th>
+      <th nzShowSort nzSortKey="dealAvrPrice">成交均价</th>
+      <!-- <th nzShowSort nzSortKey="stockCode">成交金额</th> -->
+      <th nzShowSort nzSortKey="tradeId">成交编号</th>
+      <th nzShowSort nzSortKey="appointOrderCode">委托编号</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of list">
+      <td>{{data.dealTime}}</td>
+      <td>{{data.stockCode}}</td>
+      <td>{{data.stockName}}</td>
+      <td [class]="color(data.appointTypeDesc)">{{data.appointTypeDesc}}</td>
+      <td>{{data.dealCnt}}</td>
+      <td>{{data.dealAvrPrice}}</td>
+      <td>{{data.tradeId}}</td>
+      <td>{{data.appointOrderCode}}</td>
+    </tr>
+  </tbody>
+</nz-table>
+</div>
