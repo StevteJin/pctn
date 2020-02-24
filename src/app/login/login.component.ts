@@ -26,8 +26,8 @@ export class LoginComponent implements OnInit {
         this.util.successMessage('登录成功');
         this.util.searchStockCode = '';
         this.util.sellCnt = '';
-        // this.util.saveToken(this.username, res['resultInfo'].token, res['teamCode']);
-        this.util.saveToken(this.username, res['resultInfo'],'null');
+        this.util.saveToken(this.username, res['resultInfo'].token, res['teamCode']);
+        // this.util.saveToken(this.username, res['resultInfo'],'null');
         this.util.goto('main');
       }, (err) => {
         this.util.isError(err.error);

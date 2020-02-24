@@ -10,7 +10,8 @@ export class HttpService {
   public ws = '';
   constructor(public http: HttpClient, public util: UtilService) {
     // this.host = 'http://106.14.120.212/tn/';
-    this.host = 'http://47.99.195.183:8088/tn/';
+    // this.host = 'http://47.99.195.183:8088/tn/';
+    this.host = 'http://101.133.231.208/tn/';
     // this.host='http://47.102.151.13/tn/';
     // this.host = 'http://47.103.56.22/tn/';
     // this.host='http://47.102.84.50/tn/';
